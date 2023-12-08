@@ -1,0 +1,74 @@
+-- Tabela carros
+CREATE TABLE carros (
+    idcarro PRIMARY KEY,
+    marca VARCHAR(100),
+    modelo VARCHAR(100),
+    placa VARCHAR(20) UNIQUE,
+    valordiaria DECIMAL(10, 2)
+);
+
+-- Tabela cliente
+CREATE TABLE cliente (
+    idcliente PRIMARY KEY,
+    nome VARCHAR(100),
+    cof VARCHAR(20),
+    celular VARCHAR(20),
+    cnh VARCHAR(20)
+);
+
+-- Tabela alugueis
+CREATE TABLE alugueis (
+    idaluguel PRIMARY KEY,
+    dtaluguel DATE,
+    dtdevolucao DATE,
+    valoraluguel DECIMAL(10, 2),
+    idcliente INT REFERENCES cliente(idcliente),
+    idcarro INT REFERENCES carros(idcarro)
+);-- Tabela carros
+CREATE TABLE carros (
+    idcarro PRIMARY KEY,
+    marca VARCHAR(100),
+    modelo VARCHAR(100),
+    placa VARCHAR(20) UNIQUE,
+    valordiaria DECIMAL(10, 2)
+);
+
+-- Tabela cliente
+CREATE TABLE cliente (
+    idcliente PRIMARY KEY,
+    nome VARCHAR(100),
+    cof VARCHAR(20),
+    celular VARCHAR(20),
+    cnh VARCHAR(20)
+);
+
+-- Tabela de alugueis
+CREATE TABLE alugueis(
+    idaluguel PRIMARY KEY,
+    dtaluguel DATE,
+    dtdevolucao DATE,
+    valoraluguel DECIMAL(10, 2),
+    idcliente INT REFERENCES cliente(idcliente),
+    idcarro INT REFERENCES carros(idcarro)
+);
+
+INSERT INTO <link>alugueis</link> (dtaluguel, dtdevolucao, valoraluguel, idcliente, idcarro) VALUES
+('2022-01-01', '2022-01-05', 600.00, 1, 1),
+('2022-01-10', '2022-01-15', 900.00, 2, 3),
+('2022-02-05', '2022-02-10', 750.00, 3, 2),
+('2022-02-15', '2022-02-20', 650.00, 4, 4),
+('2022-03-01', '2022-03-07', 1250.00, 5, 5);
+
+INSERT INTO <link>cliente</link> (nome, cof, celular, cnh) VALUES
+('João Silva', '123456', '999999999', 'ABC12345'),
+('Maria Souza', '234567', '888888888', 'DEF67890'),
+('Carlos Ferreira', '345678', '777777777', 'GHI98765'),
+('Ana Oliveira', '456789', '666666666', 'JKL56789'),
+('Pedro Santos', '567890', '555555555', 'MNO45678');
+
+INSERT INTO <link>carros</link> (marca, modelo, placa, valordiaria) VALUES
+('Volkswagen', 'Gol', 'ABC1234', 150.00),
+('Chevrolet', 'Onix', 'DEF5678', 180.00),
+('Ford', 'Ka', 'GHI9012', 140.00),
+('Fiat', 'Uno', 'JKL3456', 130.00),
+('Toyota', 'Corolla', 'MNO7890', 250.00);
